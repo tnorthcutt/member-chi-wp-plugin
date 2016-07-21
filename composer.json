@@ -1,0 +1,15 @@
+{
+    "name": "member-chi/wp-plugin",
+    "description": "WP Plugin for connecting to Member Chi service",
+    "type": "wordpress-plugin",
+    "require": {
+        "composer/installers": "^1.1",
+        "webdevstudios/cmb2": "^2.2.2.1"
+    },
+    "authors": [
+        {
+            "name": "Travis Northcutt",
+            "email": "travis@memberup.co"
+        }
+    ]
+}
