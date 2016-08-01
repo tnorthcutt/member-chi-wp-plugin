@@ -114,6 +114,11 @@ class Member_Chi {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-member-chi-admin.php';
 
 		/**
+		 * The class responsible for the plugin's settings
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-member-chi-settings.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
