@@ -58,6 +58,11 @@ register_deactivation_hook( __FILE__, 'deactivate_member_chi' );
 require plugin_dir_path( __FILE__ ) . 'includes/class-member-chi.php';
 
 /**
+ * Use composer autoload.
+ */
+require plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+
+/**
  * Begins execution of the plugin.
  *
  * Since everything within the plugin is registered via hooks,
