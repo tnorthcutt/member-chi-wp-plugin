@@ -29,4 +29,19 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
+	(function(_,c,h,i) {
+		_.Chi = _.Chi || [];
+		i = c.createElement("script");
+		i.async = 1;
+		i.setAttribute("data-team", options.team_id);
+		i.setAttribute("data-api", options.api_key);
+		i.setAttribute("data-email", options.email);
+		i.setAttribute("data-wp_id", options.wp_id);
+		i.src = "https://chi.dev/0.1/userevents.js";
+		h = c.getElementsByTagName("script")[0];
+		h.parentNode.insertBefore(i, h);
+
+		console.log('email:' + options.email);
+	})(window,document);
+
 })( jQuery );

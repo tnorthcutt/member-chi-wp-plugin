@@ -96,7 +96,20 @@ class Member_Chi_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/member-chi-public.js', array( 'jquery' ), $this->version, false );
+		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/member-chi-public.js', array( 'jquery' ), $this->version, false );
+
+		$options = array();
+		$options['api_key'] = member_chi_get_option('_member_chi_dev_api_key') ? member_chi_get_option('_member_chi_dev_api_key') : member_chi_get_option('_member_chi_api_key');
+		$options['team_id'] = member_chi_get_option('_member_chi_team_id');
+		$user = wp_get_current_user();
+		$options['email'] = $user->user_email;
+		$options['wp_id'] = $user->ID;
+
+		// Don't load tracking if no logged in user or getting user info otherwise fails
+		if ( $options['wp_id'] == 0 ) return;
+
+		wp_localize_script( $this->plugin_name, 'options', $options );
+		wp_enqueue_script( $this->plugin_name );
 
 	}
 
