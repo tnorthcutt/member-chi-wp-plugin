@@ -1,0 +1,7 @@
+# Ignore these when building a distribution with `wp dist-archive`
+.distignore
+.git
+.gitignore
+composer.json
+composer.lock
+.DS_Store
