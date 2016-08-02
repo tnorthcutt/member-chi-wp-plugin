@@ -100,6 +100,7 @@ class Member_Chi_Public {
 
 		$options = array();
 		$options['api_key'] = member_chi_get_option('_member_chi_dev_api_key') ? member_chi_get_option('_member_chi_dev_api_key') : member_chi_get_option('_member_chi_api_key');
+		$options['url'] = member_chi_get_option('_member_chi_dev_api_key') ? 'https://chi.dev/0.1/userevents.js' : 'https://chi.memberup.co/0.1/userevents.js';
 		$options['team_id'] = member_chi_get_option('_member_chi_team_id');
 		$user = wp_get_current_user();
 		$options['email'] = $user->user_email;
