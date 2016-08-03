@@ -142,6 +142,12 @@ class Member_Chi_Settings {
 			'type' => 'text',
 		) );
 
+		$cmb->add_field( array(
+			'name' => __( 'Debug mode', 'member-chi' ),
+			'id' => $prefix . 'debug',
+			'type' => 'checkbox',
+		) );
+
 	}
 
 	/**
