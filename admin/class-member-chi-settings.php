@@ -202,7 +202,6 @@ function member_chi_settings() {
  * @return mixed        Option value
  */
 function member_chi_get_option( $key = '' ) {
-	dbgx_trace_var( $key);
 	return cmb2_get_option( member_chi_settings()->key, $key );
 }
 
