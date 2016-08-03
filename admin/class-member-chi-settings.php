@@ -1,8 +1,11 @@
 <?php
 
 /**
- * CMB2 Theme Options
- * @version 0.1.0
+ * Class Member_Chi_Settings
+ *
+ * @package    Member_Chi
+ * @subpackage Member_Chi/settings
+ * @author     Member Up <travis@memberup.co>
  */
 class Member_Chi_Settings {
 
