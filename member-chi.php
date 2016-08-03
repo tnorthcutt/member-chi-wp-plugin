@@ -9,7 +9,7 @@
  * that starts the plugin.
  *
  * @link              https://memberup.co
- * @since             0.1.0
+ * @since             0.2.0
  * @package           Member_Chi
  *
  * @wordpress-plugin
