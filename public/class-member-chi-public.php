@@ -103,11 +103,11 @@ class Member_Chi_Public {
 		}
 
 		// Are we in debug mode?
-		$debug = member_chi_get_option( '_member_chi_debug' ) ? true : false;
+		$options['debug'] = member_chi_get_option( '_member_chi_debug' ) ? true : false;
 
 		// Use appropriate options based on debug mode (or not)
-		$options['api_key'] = $debug ? member_chi_get_option( '_member_chi_dev_api_key' ) : member_chi_get_option( '_member_chi_api_key' );
-		$options['url']     = $debug ? 'https://chi.dev/0.1/userevents.js' : 'https://chi.memberup.co/0.1/userevents.js';
+		$options['api_key'] = $options['debug'] ? member_chi_get_option( '_member_chi_dev_api_key' ) : member_chi_get_option( '_member_chi_api_key' );
+		$options['url']     = $options['debug'] ? 'https://chi.dev/0.1/userevents.js' : 'https://chi.memberup.co/0.1/userevents.js';
 
 		// Set other options we need
 		$options['team_id'] = member_chi_get_option( '_member_chi_team_id' );

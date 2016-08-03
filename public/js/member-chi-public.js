@@ -37,6 +37,7 @@
 		i.setAttribute("data-api", options.api_key);
 		i.setAttribute("data-email", options.email);
 		i.setAttribute("data-wp_id", options.wp_id);
+		i.setAttribute("data-debug", options.debug);
 		i.src = options.url;
 		h = c.getElementsByTagName("script")[0];
 		h.parentNode.insertBefore(i, h);
