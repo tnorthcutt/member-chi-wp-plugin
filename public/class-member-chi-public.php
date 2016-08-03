@@ -8,16 +8,6 @@
  *
  * @package    Member_Chi
  * @subpackage Member_Chi/public
- */
-
-/**
- * The public-facing functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
- * @package    Member_Chi
- * @subpackage Member_Chi/public
  * @author     Member Up <travis@memberup.co>
  */
 class Member_Chi_Public {
