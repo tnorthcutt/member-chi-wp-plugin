@@ -1,16 +1,6 @@
 <?php
 
 /**
- * Register all actions and filters for the plugin
- *
- * @link       https://memberup.co
- * @since      1.0.0
- *
- * @package    Member_Chi
- * @subpackage Member_Chi/includes
- */
-
-/**
  * Register all actions and filters for the plugin.
  *
  * Maintain a list of all hooks that are registered throughout
