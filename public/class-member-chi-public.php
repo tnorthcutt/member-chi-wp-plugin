@@ -27,7 +27,7 @@ class Member_Chi_Public {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $plugin_name    The ID of this plugin.
+	 * @var      string $plugin_name The ID of this plugin.
 	 */
 	private $plugin_name;
 
@@ -36,7 +36,7 @@ class Member_Chi_Public {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $version    The current version of this plugin.
+	 * @var      string $version The current version of this plugin.
 	 */
 	private $version;
 
@@ -44,13 +44,14 @@ class Member_Chi_Public {
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 *
+	 * @param      string $plugin_name The name of the plugin.
+	 * @param      string $version The version of this plugin.
 	 */
 	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
 
 	}
 
@@ -73,7 +74,8 @@ class Member_Chi_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/member-chi-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/member-chi-public.css', array(),
+			$this->version, 'all' );
 
 	}
 
@@ -96,7 +98,8 @@ class Member_Chi_Public {
 		 * class.
 		 */
 
-		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/member-chi-public.js', array( 'jquery' ), $this->version, false );
+		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/member-chi-public.js',
+			array( 'jquery' ), $this->version, false );
 
 		// Set up empty options array
 		$options = array();
@@ -105,18 +108,20 @@ class Member_Chi_Public {
 		$user = wp_get_current_user();
 
 		// Don't load tracking if no logged in user or getting user info otherwise fails
-		if ( $options['wp_id'] = $user->ID == 0 ) return;
+		if ( $options['wp_id'] = $user->ID == 0 ) {
+			return;
+		}
 
 		// Are we in debug mode?
-		$debug = member_chi_get_option('_member_chi_debug') ? true : false;
+		$debug = member_chi_get_option( '_member_chi_debug' ) ? true : false;
 
 		// Use appropriate options based on debug mode (or not)
-		$options['api_key'] = $debug ? member_chi_get_option('_member_chi_dev_api_key') : member_chi_get_option('_member_chi_api_key');
-		$options['url'] = $debug ? 'https://chi.dev/0.1/userevents.js' : 'https://chi.memberup.co/0.1/userevents.js';
+		$options['api_key'] = $debug ? member_chi_get_option( '_member_chi_dev_api_key' ) : member_chi_get_option( '_member_chi_api_key' );
+		$options['url']     = $debug ? 'https://chi.dev/0.1/userevents.js' : 'https://chi.memberup.co/0.1/userevents.js';
 
 		// Set other options we need
-		$options['team_id'] = member_chi_get_option('_member_chi_team_id');
-		$options['email'] = $user->user_email;
+		$options['team_id'] = member_chi_get_option( '_member_chi_team_id' );
+		$options['email']   = $user->user_email;
 
 		// Pass data to js
 		wp_localize_script( $this->plugin_name, 'options', $options );
