@@ -40,8 +40,6 @@
 		i.src = options.url;
 		h = c.getElementsByTagName("script")[0];
 		h.parentNode.insertBefore(i, h);
-
-		console.log('email:' + options.email);
 	})(window,document);
 
 })( jQuery );
