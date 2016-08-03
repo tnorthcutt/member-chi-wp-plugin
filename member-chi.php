@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://memberup.co
- * @since             1.0.0
+ * @since             0.1.0
  * @package           Member_Chi
  *
  * @wordpress-plugin
  * Plugin Name:       Member Chi
  * Plugin URI:        https://memberchi.com
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.1
+ * Version:           0.1.0
  * Author:            Member Up
  * Author URI:        https://memberup.co
  * License:           GPL-2.0+
@@ -69,7 +69,7 @@ require plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    0.1.0
  */
 function run_member_chi() {
 

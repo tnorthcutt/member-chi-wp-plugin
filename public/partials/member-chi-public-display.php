@@ -6,7 +6,7 @@
  * This file is used to markup the public-facing aspects of the plugin.
  *
  * @link       https://memberup.co
- * @since      1.0.0
+ * @since      0.1.0
  *
  * @package    Member_Chi
  * @subpackage Member_Chi/public/partials
