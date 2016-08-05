@@ -16,7 +16,7 @@
  * Plugin Name:       Member Chi
  * Plugin URI:        https://memberchi.com
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           0.2.0
+ * Version:           0.2.1
  * Author:            Member Up
  * Author URI:        https://memberup.co
  * License:           GPL-2.0+
