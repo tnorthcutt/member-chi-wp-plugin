@@ -98,7 +98,7 @@ class Member_Chi_Public {
 		$user = wp_get_current_user();
 
 		// Don't load tracking if no logged in user or getting user info otherwise fails
-		if ( $options['wp_id'] = $user->ID == 0 ) {
+		if ( ( $options['wp_id'] = $user->ID ) == 0 ) {
 			return;
 		}
 
