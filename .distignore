@@ -5,3 +5,4 @@
 composer.json
 composer.lock
 .DS_Store
+readme.md

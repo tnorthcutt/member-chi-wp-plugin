@@ -15,14 +15,15 @@
  * @wordpress-plugin
  * Plugin Name:       Member Chi
  * Plugin URI:        https://memberchi.com
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       This plugin connects your site to the Chi app at https://app.memberchi.com
  * Version:           1.0
- * Author:            Member Up
- * Author URI:        https://memberup.co
+ * Author:            Member Chi
+ * Author URI:        https://memberchi.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       member-chi
  * Domain Path:       /languages
+ * GitHub URI:        tnorthcutt/member-chi-wp-plugin
  */
 
 // If this file is called directly, abort.
@@ -61,6 +62,12 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-member-chi.php';
  * Use composer autoload.
  */
 require plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
+
+/**
+ * Use GitHub updater plugin
+ * https://github.com/FacetWP/github-updater-lite
+ */
+include( dirname( __FILE__ ) . '/lib/github-updater.php' );
 
 /**
  * Begins execution of the plugin.
