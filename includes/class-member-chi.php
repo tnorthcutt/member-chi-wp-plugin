@@ -56,7 +56,7 @@ class Member_Chi {
 	public function __construct() {
 
 		$this->plugin_name = 'member-chi';
-		$this->version = '0.2.1';
+		$this->version = '1.0';
 
 		$this->load_dependencies();
 		$this->set_locale();
