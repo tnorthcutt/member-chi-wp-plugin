@@ -87,4 +87,50 @@ class Member_Chi_Admin {
 
 	}
 
+	public function csv_export() {
+		if ( isset( $_GET['memberchi_wp_users_export'] ) ) {
+			if ( ! wp_verify_nonce( $_GET['memberchi_wp_users_export'], 'csv_export' ) ) {
+				wp_die( 'Something went wrong, please try again.' );
+			}
+			$users = get_users(
+				array(
+					'fields' => array(
+						'ID',
+						'user_email',
+					),
+				)
+			);
+
+			// Set header row values
+			$csv_fields = array();
+			$csv_fields[] = 'ID';
+			$csv_fields[] = 'User Email';
+			$output_filename = 'WordPress-Users.csv';
+			$output_handle = @fopen( 'php://output', 'w' );
+
+			header( 'Cache-Control: must-revalidate, post-check=0, pre-check=0' );
+			header( 'Content-Description: File Transfer' );
+			header( 'Content-type: text/csv' );
+			header( 'Content-Disposition: attachment; filename=' . $output_filename );
+			header( 'Expires: 0' );
+			header( 'Pragma: public' );
+
+			// Insert header row
+			fputcsv( $output_handle, $csv_fields );
+
+			// Parse results to csv format
+			foreach ( $users as $user ) {
+				$lead_array = (array) $user; // Cast the Object to an array
+				// Add row to file
+				fputcsv( $output_handle, $lead_array );
+			}
+
+			// Close output file stream
+			fclose( $output_handle );
+			die();
+
+			wp_safe_redirect( menu_page_url( 'member_chi_options', false ) );
+			exit;
+		} // End if().
+	}
 }

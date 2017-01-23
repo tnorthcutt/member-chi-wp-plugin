@@ -100,6 +100,14 @@ class Member_Chi_Settings {
 		?>
 		<div class="wrap cmb2-options-page <?php echo $this->key; ?>">
 			<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+			<div class="cmb-row cmb-type-text cmb2-id--member-chi-api-key table-layout" data-fieldtype="text">
+				<div class="cmb-th">
+					<label for="_member_chi_api_key">Export WP Users</label>
+				</div>
+				<div class="cmb-td">
+					<a href="<?php echo wp_nonce_url( menu_page_url( $this->key, false ), 'csv_export', 'memberchi_wp_users_export' ); ?>" class="button-secondary">Export to CSV</a>
+				</div>
+			</div>
 			<?php cmb2_metabox_form( $this->metabox_id, $this->key ); ?>
 		</div>
 		<?php
