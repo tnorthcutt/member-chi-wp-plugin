@@ -70,15 +70,24 @@ require plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 include( dirname( __FILE__ ) . '/lib/github-updater.php' );
 
 /**
- * Begins execution of the plugin.
+ * The main function that returns Member_Chi
  *
- * Since everything within the plugin is registered via hooks,
- * then kicking off the plugin from this point in the file does
- * not affect the page life cycle.
+ * The main function responsible for returning the one true Member_Chi
+ * Instance to functions everywhere.
  *
- * @since    0.1.0
+ * Use this function like you would a global variable, except without needing
+ * to declare the global.
+ *
+ * Inspired by code from Easy Digital Downloads
+ *
+ * Example: <?php $member_chi = member_chi(); ?>
+ *
+ * @since 1.2
+ * @return object|Member_Chi one true Member_Chi Instance.
  */
-function run_member_chi() {
-	$plugin = new Member_Chi();
+function member_chi() {
+	return Member_Chi::instance();
 }
-run_member_chi();
+
+// Get Member Chi Running.
+member_chi();

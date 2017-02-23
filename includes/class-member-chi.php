@@ -17,6 +17,11 @@
 class Member_Chi {
 
 	/**
+	 * @var
+	 */
+	private static $instance;
+
+	/**
 	 * The unique identifier of this plugin.
 	 *
 	 * @since    0.1.0
@@ -47,12 +52,34 @@ class Member_Chi {
 
 		$this->plugin_name = 'member-chi';
 		$this->version = '1.0';
+	}
 
-		$this->load_dependencies();
-		$this->set_locale();
-		$this->define_admin_hooks();
-		$this->define_public_hooks();
+	/**
+	 * Main Member_Chi Instance.
+	 *
+	 * Insures that only one instance of Member_Chi exists in memory at any one
+	 * time. Also prevents needing to define globals all over the place.
+	 *
+	 * @since 1.2
+	 * @static
+	 * @staticvar array $instance
+	 * @uses Member_Chi::includes() Include the required files.
+	 * @see Member_Chi()
+	 * @return object|Member_Chi The one true Member_Chi
+	 */
+	public static function instance() {
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Easy_Digital_Downloads ) ) {
+			self::$instance = new Member_Chi;
 
+			self::$instance->includes();
+			self::$instance->set_locale();
+			self::$instance->define_admin_hooks();
+			self::$instance->define_public_hooks();
+
+			self::$instance->integrations = new Member_Chi_Membership_Plugin_Integrations();
+
+		}
+		return self::$instance;
 	}
 
 	/**
@@ -67,7 +94,7 @@ class Member_Chi {
 	 * @since    0.1.0
 	 * @access   private
 	 */
-	private function load_dependencies() {
+	private function includes() {
 
 		/**
 		 * The class responsible for defining internationalization functionality
@@ -91,6 +118,10 @@ class Member_Chi {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-member-chi-public.php';
 
+		/**
+		 * The class responsible for handling membership plugin integrations
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/integrations/class-member-chi-membership-plugin-integrations.php';
 
 	}
 
