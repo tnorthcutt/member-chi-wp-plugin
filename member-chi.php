@@ -79,9 +79,6 @@ include( dirname( __FILE__ ) . '/lib/github-updater.php' );
  * @since    0.1.0
  */
 function run_member_chi() {
-
 	$plugin = new Member_Chi();
-	$plugin->run();
-
 }
 run_member_chi();

@@ -17,16 +17,6 @@
 class Member_Chi {
 
 	/**
-	 * The loader that's responsible for maintaining and registering all hooks that power
-	 * the plugin.
-	 *
-	 * @since    0.1.0
-	 * @access   protected
-	 * @var      Member_Chi_Loader    $loader    Maintains and registers all hooks for the plugin.
-	 */
-	protected $loader;
-
-	/**
 	 * The unique identifier of this plugin.
 	 *
 	 * @since    0.1.0
@@ -70,24 +60,14 @@ class Member_Chi {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Member_Chi_Loader. Orchestrates the hooks of the plugin.
 	 * - Member_Chi_i18n. Defines internationalization functionality.
 	 * - Member_Chi_Admin. Defines all hooks for the admin area.
 	 * - Member_Chi_Public. Defines all hooks for the public side of the site.
-	 *
-	 * Create an instance of the loader which will be used to register the hooks
-	 * with WordPress.
 	 *
 	 * @since    0.1.0
 	 * @access   private
 	 */
 	private function load_dependencies() {
-
-		/**
-		 * The class responsible for orchestrating the actions and filters of the
-		 * core plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-member-chi-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
@@ -111,7 +91,6 @@ class Member_Chi {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-member-chi-public.php';
 
-		$this->loader = new Member_Chi_Loader();
 
 	}
 
@@ -128,7 +107,7 @@ class Member_Chi {
 
 		$plugin_i18n = new Member_Chi_i18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+		add_action( 'plugins_loaded', array($plugin_i18n, 'load_plugin_textdomain') );
 
 	}
 
@@ -143,10 +122,10 @@ class Member_Chi {
 
 		$plugin_admin = new Member_Chi_Admin( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		add_action( 'admin_enqueue_scripts', array($plugin_admin, 'enqueue_styles') );
+		add_action( 'admin_enqueue_scripts', array($plugin_admin, 'enqueue_scripts') );
 
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'csv_export' );
+		add_action( 'admin_init', array($plugin_admin, 'csv_export') );
 
 	}
 
@@ -161,18 +140,9 @@ class Member_Chi {
 
 		$plugin_public = new Member_Chi_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		add_action( 'wp_enqueue_scripts', array($plugin_public, 'enqueue_styles') );
+		add_action( 'wp_enqueue_scripts', array($plugin_public, 'enqueue_scripts') );
 
-	}
-
-	/**
-	 * Run the loader to execute all of the hooks with WordPress.
-	 *
-	 * @since    0.1.0
-	 */
-	public function run() {
-		$this->loader->run();
 	}
 
 	/**
@@ -184,16 +154,6 @@ class Member_Chi {
 	 */
 	public function get_plugin_name() {
 		return $this->plugin_name;
-	}
-
-	/**
-	 * The reference to the class that orchestrates the hooks with the plugin.
-	 *
-	 * @since     0.1.0
-	 * @return    Member_Chi_Loader    Orchestrates the hooks of the plugin.
-	 */
-	public function get_loader() {
-		return $this->loader;
 	}
 
 	/**
