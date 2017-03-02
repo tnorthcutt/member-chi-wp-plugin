@@ -146,6 +146,8 @@ class Member_Chi {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'user_upload' );
+		$this->loader->add_action( 'member_chi_user_upload_add_batch', $plugin_admin, 'member_chi_user_upload', 10, 3 );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'csv_export' );
 
 	}
