@@ -1,5 +1,5 @@
 {
-    "name": "member-chi/wp-plugin",
+    "name": "tnorthcutt/member-chi-wp-plugin",
     "description": "WP Plugin for connecting to Member Chi service",
     "type": "wordpress-plugin",
     "require": {
