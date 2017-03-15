@@ -18,7 +18,9 @@ abstract class Member_Chi_Membership_Plugin_Integration {
 			'redirection' => '5',
 			'httpversion' => '1.0',
 			'blocking' => true,
-			'headers' => array(),
+			'headers' => array(
+				'Content-Type' => 'application/json'
+			),
 			'cookies' => array(),
 			'sslverify' => false,
 		);

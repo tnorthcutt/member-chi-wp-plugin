@@ -18,7 +18,7 @@ class Member_Chi_Restrict_Content_Pro_Integration extends Member_Chi_Membership_
 	public function __construct() {
 		$this->define_hooks();
 		$this->team_hash = 'olejRejN';
-		$this->url = 'https://chi.dev/integration/restrictcontentpro' . $this->team_hash;
+		$this->url = 'https://chi.dev/integration/restrictcontentpro/   ' . $this->team_hash;
 		$this->statuses = array(
 			'active',
 			'expired',

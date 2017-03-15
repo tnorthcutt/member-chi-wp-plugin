@@ -28,9 +28,15 @@ class Member_Chi_Membership_Plugin_Integrations {
 	 *
 	 */
 	public function load_integrations() {
+		require_once dirname(__FILE__) . '/class-member-chi-membership-plugin-integration.php';
 		if ( class_exists( 'RCP_Levels' ) ) {
 			require_once dirname(__FILE__) . '/restrict-content-pro/class-member-chi-restrict-content-pro-integration.php';
 			new Member_Chi_Restrict_Content_Pro_Integration();
+		}
+
+		if ( class_exists( 'WPComplete' ) ) {
+			require_once dirname(__FILE__) . '/wp-complete/class-member-chi-wp-complete-integration.php';
+			new Member_Chi_Wp_Complete_Integration();
 		}
 	}
 
