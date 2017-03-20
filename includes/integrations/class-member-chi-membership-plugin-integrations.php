@@ -38,6 +38,16 @@ class Member_Chi_Membership_Plugin_Integrations {
 			require_once dirname(__FILE__) . '/wp-complete/class-member-chi-wp-complete-integration.php';
 			new Member_Chi_Wp_Complete_Integration();
 		}
+		if ( class_exists( 'WC_Memberships' ) ) {
+			require_once dirname(__FILE__) . '/woocommerce-memberships/class-member-chi-woocommerce-memberships-integration.php';
+			new Member_Chi_WooCommerce_Memberships_Integration();
+		}
+
+		if ( class_exists( 'bbPress' ) ) {
+			require_once dirname(__FILE__) . '/bbpress/class-member-chi-bbpress-integration.php';
+			new Member_Chi_bbPress_Integration();
+		}
+
 	}
 
 }
