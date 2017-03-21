@@ -94,31 +94,29 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 
 	}
 
-		/**
-		 * @param WC_Memberships_Membership_Plan $membership_plan
-		 * @param array $args
-		 */
-		public function membership_status_changed( $user_membership, $old_status, $new_status ) {
+	/**
+	 * @param WC_Memberships_Membership_Plan $membership_plan
+	 * @param array $args
+	 */
+	public function membership_status_changed( $user_membership, $old_status, $new_status ) {
 
-			var_dump( '<pre>', $user_membership, $new_status, '</pre>' ); exit;
+		$user = get_userdata( $user_membership->user_id );
 
-			$user = get_userdata( $user_membership->user_id );
+		$body = array(
+			'email' => $user->user_email,
+			'wp_id' => $user_membership->user_id, // @TODO check $user_id is correct here
+			'user_membership_id' => $user_membership->id, // @TODO check if $id is correct here
+			'event_type' => $new_satus,
+		);
 
-			$body = array(
-				'email' => $user->user_email,
-				'wp_id' => $user_membership->user_id, // @TODO check $user_id is correct here
-				'user_membership_id' => $user_membership->id, // @TODO check if $id is correct here
-				'event_type' => $new_satus,
-			);
+		$this->url = 'https://chi.dev/api/integration/woocommerce-memberships/' . $this->team_hash;
 
-			$this->url = 'https://chi.dev/api/integration/woocommerce-memberships/' . $this->team_hash;
+		$response = $this->post( $this->url, $body );
 
-			$response = $this->post( $this->url, $body );
+		error_log( print_r( $response, true ) );
 
-			error_log( print_r( $response, true ) );
+		error_log( $this->url );
 
-			error_log( $this->url );
-
-		}
+	}
 
 }

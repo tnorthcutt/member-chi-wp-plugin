@@ -6,7 +6,7 @@
  * @subpackage Member_Chi/includes/integrations
  * @author     Member Up <travis@memberup.co>
  */
-class Member_Chi_bbPress_Integration extends Member_Chi_Membership_Plugin_Integration {
+class Member_Chi_BBPress_Integration extends Member_Chi_Membership_Plugin_Integration {
 
 	private $team_hash;
 	private $url;
@@ -71,7 +71,7 @@ class Member_Chi_bbPress_Integration extends Member_Chi_Membership_Plugin_Integr
 	 * @param bool $false
 	 * @param int $reply_to
 	 */
-	public function new_reply( $reply_id,  $topic_id,  $forum_id,  $anonymous_data,  $reply_author,  $false,  $reply_to ) {
+	public function new_reply( $reply_id, $topic_id, $forum_id, $anonymous_data, $reply_author, $false, $reply_to ) {
 
 		$user = get_userdata( $reply_author );
 
