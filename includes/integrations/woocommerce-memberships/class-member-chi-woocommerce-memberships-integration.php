@@ -104,8 +104,8 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 
 		$body = array(
 			'email' => $user->user_email,
-			'wp_id' => $user_membership->user_id, // @TODO check $user_id is correct here
-			'user_membership_id' => $user_membership->id, // @TODO check if $id is correct here
+			'wp_id' => $user_membership->user_id,
+			'user_membership_id' => $user_membership->id,
 			'event_type' => $new_satus,
 		);
 
