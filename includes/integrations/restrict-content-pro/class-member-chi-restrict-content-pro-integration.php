@@ -53,19 +53,19 @@ class Member_Chi_Restrict_Content_Pro_Integration extends Member_Chi_Membership_
 		switch ( $new_status ) {
 			case 'pending':
 				$body['event_type'] = 'membership_pending';
-			break;
+				break;
 			case 'free':
 				$body['event_type'] = 'membership_free';
 				break;
 			case 'active':
 				$body['event_type'] = 'membership_active';
-			break;
+				break;
 			case 'expired':
 				$body['event_type'] = 'membership_expired';
-			break;
+				break;
 			case 'cancelled':
 				$body['event_type'] = 'membership_cancelled';
-			break;
+				break;
 			default:
 				$body['event_type'] = $new_status;
 		}
