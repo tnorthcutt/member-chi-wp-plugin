@@ -40,7 +40,7 @@ class Member_Chi_Membership_Plugin_Integrations {
 			new Member_Chi_Wp_Complete_Integration();
 		}
 
-		if ( is_woocommerce_active() && is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) ) {
+		if ( is_plugin_active( 'woocommerce/woocommerce.php' ) && is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) ) {
 			require_once dirname( __FILE__ ) . '/woocommerce-memberships/class-member-chi-woocommerce-memberships-integration.php';
 			new Member_Chi_WooCommerce_Memberships_Integration();
 		}
