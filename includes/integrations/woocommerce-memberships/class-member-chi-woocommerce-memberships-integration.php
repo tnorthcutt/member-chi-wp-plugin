@@ -69,8 +69,7 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 	}
 
 	/**
-	 * @param WC_Memberships_Membership_Plan $membership_plan
-	 * @param array $args
+	 * @param int $user_membership_id
 	 */
 	public function membership_cancelled( $user_membership_id ) {
 
@@ -95,8 +94,9 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 	}
 
 	/**
-	 * @param WC_Memberships_Membership_Plan $membership_plan
-	 * @param array $args
+	 * @param WC_Memberships_User_Membership $user_membership
+	 * @param string $old_status Old status, without the wcm- prefix
+	 * @param string $new_status New status, without the wcm- prefix
 	 */
 	public function membership_status_changed( $user_membership, $old_status, $new_status ) {
 
