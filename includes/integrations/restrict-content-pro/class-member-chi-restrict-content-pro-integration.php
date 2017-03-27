@@ -24,7 +24,7 @@ class Member_Chi_Restrict_Content_Pro_Integration extends Member_Chi_Membership_
 			'expired',
 			'cancelled',
 			'pending',
-			'free'
+			'free',
 		);
 	}
 
@@ -47,7 +47,8 @@ class Member_Chi_Restrict_Content_Pro_Integration extends Member_Chi_Membership_
 		$body = array(
 			'email' => $rcp_member->user_email,
 			'wp_id' => $rcp_member->ID,
-			'team_id' => $this->team_hash
+			'team_id' => $this->team_hash,
+			'old_status' => $old_status,
 		);
 
 		switch ( $new_status ) {
