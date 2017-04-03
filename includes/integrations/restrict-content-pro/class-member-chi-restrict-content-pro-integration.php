@@ -43,7 +43,6 @@ class Member_Chi_Restrict_Content_Pro_Integration extends Member_Chi_Membership_
 	 * @param Rcp_Member $rcp_member
 	 */
 	public function status_change( $new_status, $rcp_member_id, $old_status, $rcp_member ) {
-
 		$body = array(
 			'email' => $rcp_member->user_email,
 			'wp_id' => $rcp_member->ID,
@@ -69,6 +68,13 @@ class Member_Chi_Restrict_Content_Pro_Integration extends Member_Chi_Membership_
 				break;
 			default:
 				$body['event_type'] = $new_status;
+		}
+
+		// If this is a new subscription, set the join date.
+		if ( '' === $old_status ) {
+			$body['date_join'] = time();
+		} elseif ( 'expired' === $new_status ) {
+			$body['date_expiration'] = time();
 		}
 
 		$this->url = 'https://chi.dev/api/integration/restrictcontentpro/' . $this->team_hash;
