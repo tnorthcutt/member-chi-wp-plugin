@@ -57,7 +57,12 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 			'user_membership_id' => $args['user_membership_id'],
 		);
 
-		$body['event_type'] = $arg['is_update'] ? 'membership_access_granted' : 'new_membership_access_granted';
+		if ( true === $arg['is_update'] ) {
+			$body['event_type'] = 'membership_access_granted';
+		} else {
+			$body['event_type'] = 'new_membership_access_granted';
+			$body['date_join'] = time();
+		}
 
 		$this->url = 'https://chi.dev/api/integration/woocommerce-memberships/' . $this->team_hash;
 
@@ -110,6 +115,10 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 			'event_type' => $new_satus,
 			'old_status' => $old_status,
 		);
+
+		if ( 'expired' === $new_status ) {
+			$body['date_expired'] = time();
+		}
 
 		$this->url = 'https://chi.dev/api/integration/woocommerce-memberships/' . $this->team_hash;
 
