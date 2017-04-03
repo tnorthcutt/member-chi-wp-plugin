@@ -116,7 +116,7 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 			'old_status' => $old_status,
 		);
 
-		if ( 'expired' === $old_status ) {
+		if ( 'expired' === $new_status ) {
 			$body['date_expired'] = time();
 		}
 
