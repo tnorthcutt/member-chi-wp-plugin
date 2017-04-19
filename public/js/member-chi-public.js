@@ -1,6 +1,7 @@
 (function( $ ) {
 	'use strict';
 
+	console.log('it\'s here!');
 	/**
 	 * All of the code for your public-facing JavaScript source
 	 * should reside in this file.
