@@ -105,6 +105,7 @@ class Member_Chi_Settings {
 					<label for="_member_chi_api_key">Export WP Users</label>
 				</div>
 				<div class="cmb-td">
+					<a href="<?php echo wp_nonce_url( menu_page_url( $this->key, false ), 'csv_export', 'memberchi_wp_users_upload' ); ?>" class="button-secondary">Send to Chi</a>
 					<a href="<?php echo wp_nonce_url( menu_page_url( $this->key, false ), 'csv_export', 'memberchi_wp_users_export' ); ?>" class="button-secondary">Export to CSV</a>
 				</div>
 			</div>

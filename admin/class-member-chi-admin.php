@@ -87,6 +87,34 @@ class Member_Chi_Admin {
 
 	}
 
+	public function user_upload() {
+		if ( isset( $_GET['memberchi_wp_users_upload'] ) ) {
+			if ( ! wp_verify_nonce( $_GET['memberchi_wp_users_upload'], 'csv_export' ) ) {
+				wp_die( 'Something went wrong, please try again.' );
+			}
+			$users = get_users(
+				array(
+					'fields' => array(
+						'ID',
+						'user_email',
+					),
+				)
+			);
+
+			// Split the user list into batches of 100
+			$batches = array_chunk( $users, 100 );
+
+			foreach ( $batches as $batch_key => $batch ) {
+				// Schedule batches in 1 hour intervals
+				wp_schedule_single_event( time() + ( 3600 * ( $batch_key + 1 ) ), 'member_chi_user_upload_add_batch', $batch );
+			}
+		} // End if().
+	}
+
+	public function member_chi_user_upload( $batch ) {
+			// @TODO Make API call to upload users
+	}
+
 	public function csv_export() {
 		if ( isset( $_GET['memberchi_wp_users_export'] ) ) {
 			if ( ! wp_verify_nonce( $_GET['memberchi_wp_users_export'], 'csv_export' ) ) {
