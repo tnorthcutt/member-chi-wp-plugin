@@ -77,7 +77,7 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 	 */
 	public function membership_cancelled( $user_membership_id ) {
 
-		$user_membership = get_postdata( $user_membership_id );
+		$user_membership = get_post( $user_membership_id );
 		$user = get_userdata( $user_membership->post_author );
 
 		$body = array(
