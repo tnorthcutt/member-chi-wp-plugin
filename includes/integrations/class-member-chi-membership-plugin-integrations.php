@@ -21,7 +21,7 @@ class Member_Chi_Membership_Plugin_Integrations {
 	 *
 	 */
 	public function define_hooks() {
-		add_action( 'plugins_loaded', array( $this, 'load_integrations' ) );
+		add_action( 'cmb2_init', array( $this, 'load_integrations' ) );
 	}
 
 	/**
