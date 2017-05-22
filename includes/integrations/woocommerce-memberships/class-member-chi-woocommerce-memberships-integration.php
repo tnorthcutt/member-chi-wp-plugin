@@ -110,7 +110,7 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 			'email' => $user->user_email,
 			'wp_id' => $user_membership->user_id,
 			'user_membership_id' => $user_membership->id,
-			'event_type' => $new_satus,
+			'event_type' => $new_status,
 			'old_status' => $old_status,
 		);
 
