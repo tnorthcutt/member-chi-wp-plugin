@@ -8,6 +8,14 @@
  */
 abstract class Member_Chi_Membership_Plugin_Integration {
 
+	protected $team_hash;
+	protected $app_url;
+
+	public function construct() {
+		$this->team_hash = member_chi_get_option( '_member_chi_team_id' );
+		$this->app_url = member_chi_get_app_url();
+	}
+
 	public function post( $url, $body, $args = array() ) {
 
 		$body = json_encode( $body );

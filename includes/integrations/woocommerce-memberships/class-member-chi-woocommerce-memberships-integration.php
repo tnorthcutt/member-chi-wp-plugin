@@ -8,7 +8,6 @@
  */
 class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membership_Plugin_Integration {
 
-	private $team_hash;
 	private $url;
 	private $statuses;
 
@@ -16,9 +15,10 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 	 * Member_Chi_WooCommerce_Memberships_Integration constructor.
 	 */
 	public function __construct() {
+		parent::construct();
+
 		$this->define_hooks();
-		$this->team_hash = 'olejRejN';
-		$this->url = 'https://chi.dev/integration/woocommerce-memberships/   ' . $this->team_hash;
+		$this->url = $this->app_url . '/integration/woocommerce-memberships/' . $this->team_hash;
 		$this->statuses = array(
 			'active',
 			'expired',
@@ -57,14 +57,12 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 			'user_membership_id' => $args['user_membership_id'],
 		);
 
-		if ( true === $arg['is_update'] ) {
+		if ( true === $args['is_update'] ) {
 			$body['event_type'] = 'membership_access_granted';
 		} else {
 			$body['event_type'] = 'new_membership_access_granted';
 			$body['date_join'] = time();
 		}
-
-		$this->url = 'https://chi.dev/api/integration/woocommerce-memberships/' . $this->team_hash;
 
 		$response = $this->post( $this->url, $body );
 

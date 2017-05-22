@@ -217,5 +217,9 @@ function member_chi_get_option( $key = '' ) {
 	return cmb2_get_option( member_chi_settings()->key, $key );
 }
 
+function member_chi_get_app_url() {
+    return ( member_chi_get_option( '_member_chi_debug' ) ? 'https://chi.dev' : 'https://app.memberchi.com' );
+}
+
 // Get it started
 member_chi_settings();

@@ -8,7 +8,6 @@
  */
 class Member_Chi_Restrict_Content_Pro_Integration extends Member_Chi_Membership_Plugin_Integration {
 
-	private $team_hash;
 	private $url;
 	private $statuses;
 
@@ -16,9 +15,10 @@ class Member_Chi_Restrict_Content_Pro_Integration extends Member_Chi_Membership_
 	 * Member_Chi_Restrict_Content_Pro_Integration constructor.
 	 */
 	public function __construct() {
+		parent::construct();
+
 		$this->define_hooks();
-		$this->team_hash = 'olejRejN';
-		$this->url = 'https://chi.dev/integration/restrictcontentpro/   ' . $this->team_hash;
+		$this->url = $this->app_url . '/integration/restrictcontentpro/' . $this->team_hash;
 		$this->statuses = array(
 			'active',
 			'expired',
@@ -76,8 +76,6 @@ class Member_Chi_Restrict_Content_Pro_Integration extends Member_Chi_Membership_
 		} elseif ( 'expired' === $new_status ) {
 			$body['date_expiration'] = time();
 		}
-
-		$this->url = 'https://chi.dev/api/integration/restrictcontentpro/' . $this->team_hash;
 
 		$response = $this->post( $this->url, $body );
 

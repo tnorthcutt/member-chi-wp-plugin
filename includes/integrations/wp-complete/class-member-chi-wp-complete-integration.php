@@ -8,7 +8,6 @@
  */
 class Member_Chi_Wp_Complete_Integration extends Member_Chi_Membership_Plugin_Integration {
 
-	private $team_hash;
 	private $url;
 	private $statuses;
 
@@ -16,9 +15,10 @@ class Member_Chi_Wp_Complete_Integration extends Member_Chi_Membership_Plugin_In
 	 * Member_Chi_Wp_Complete_Integration constructor.
 	 */
 	public function __construct() {
+		parent::construct();
+
 		$this->define_hooks();
-		$this->team_hash = 'olejRejN';
-		$this->url = 'https://chi.dev/integration/wpcomplete/' . $this->team_hash;
+		$this->url = $this->app_url . '/integration/wpcomplete/' . $this->team_hash;
 		$this->statuses = array(
 			'active',
 			'expired',

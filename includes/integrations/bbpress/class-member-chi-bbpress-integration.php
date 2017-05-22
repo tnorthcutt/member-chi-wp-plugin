@@ -8,7 +8,6 @@
  */
 class Member_Chi_BBPress_Integration extends Member_Chi_Membership_Plugin_Integration {
 
-	private $team_hash;
 	private $url;
 	private $statuses;
 
@@ -16,9 +15,10 @@ class Member_Chi_BBPress_Integration extends Member_Chi_Membership_Plugin_Integr
 	 * Member_Chi_bbPress_Integration constructor.
 	 */
 	public function __construct() {
+		parent::construct();
+
 		$this->define_hooks();
-		$this->team_hash = 'olejRejN';
-		$this->url = 'https://chi.dev/integration/bbpress/   ' . $this->team_hash;
+		$this->url = $this->app_url . '/integration/bbpress/' . $this->team_hash;
 		$this->statuses = array(
 			'active',
 			'expired',
@@ -52,8 +52,6 @@ class Member_Chi_BBPress_Integration extends Member_Chi_Membership_Plugin_Integr
 			'event_type' => 'bbpress_new_topic',
 		);
 
-		$this->url = 'https://chi.dev/api/integration/bbpress/' . $this->team_hash;
-
 		$response = $this->post( $this->url, $body );
 
 		error_log( print_r( $response, true ) );
@@ -77,13 +75,11 @@ class Member_Chi_BBPress_Integration extends Member_Chi_Membership_Plugin_Integr
 
 		$body = array(
 			'email' => $user->user_email,
-			'wp_id' => $topic_author,
+			'wp_id' => $reply_author,
 			'reply_id' => $reply_id,
 			'topic' => $topic_id,
 			'event_type' => 'bbpress_topic_reply',
 		);
-
-		$this->url = 'https://chi.dev/api/integration/bbpress/' . $this->team_hash;
 
 		$response = $this->post( $this->url, $body );
 
