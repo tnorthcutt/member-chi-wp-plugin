@@ -107,7 +107,7 @@ class Member_Chi_Public {
 
 		// Use appropriate options based on debug mode (or not)
 		$options['api_key'] = $options['debug'] ? member_chi_get_option( '_member_chi_dev_api_key' ) : member_chi_get_option( '_member_chi_api_key' );
-		$options['url']     = 'https://app.memberchi.com/0.1/userevents.js';
+		$options['url']     = member_chi_get_app_url() . '/0.1/userevents.js';
 
 		// Set other options we need
 		$options['team_id'] = member_chi_get_option( '_member_chi_team_id' );
