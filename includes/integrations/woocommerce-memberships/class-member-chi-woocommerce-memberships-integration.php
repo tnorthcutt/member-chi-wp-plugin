@@ -58,9 +58,9 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 		);
 
 		if ( true === $args['is_update'] ) {
-			$body['event_type'] = 'membership_access_granted';
+			$body['event_type'] = 'woocommerce.membership.updated';
 		} else {
-			$body['event_type'] = 'new_membership_access_granted';
+			$body['event_type'] = 'woocommerce.membership.new';
 			$body['date_join'] = time();
 		}
 
@@ -84,10 +84,8 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 			'email' => $user->user_email,
 			'wp_id' => $user_membership->post_author,
 			'user_membership_id' => $user_membership_id,
-			'event_type' => 'membership_cancelled',
+			'event_type' => 'woocommerce.membership.cancelled',
 		);
-
-		$this->url = 'https://chi.dev/api/integration/woocommerce-memberships/' . $this->team_hash;
 
 		$response = $this->post( $this->url, $body );
 
@@ -117,8 +115,6 @@ class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membersh
 		if ( 'expired' === $new_status ) {
 			$body['date_expired'] = time();
 		}
-
-		$this->url = 'https://chi.dev/api/integration/woocommerce-memberships/' . $this->team_hash;
 
 		$response = $this->post( $this->url, $body );
 
