@@ -49,7 +49,7 @@ class Member_Chi_BBPress_Integration extends Member_Chi_Membership_Plugin_Integr
 		$body = array(
 			'email' => $user->user_email,
 			'wp_id' => $topic_author,
-			'event_type' => 'bbpress_new_topic',
+			'event_type' => 'bbpress.topic.created',
 		);
 
 		$response = $this->post( $this->url, $body );
@@ -78,7 +78,7 @@ class Member_Chi_BBPress_Integration extends Member_Chi_Membership_Plugin_Integr
 			'wp_id' => $reply_author,
 			'reply_id' => $reply_id,
 			'topic' => $topic_id,
-			'event_type' => 'bbpress_topic_reply',
+			'event_type' => 'bbpress.topic.replied',
 		);
 
 		$response = $this->post( $this->url, $body );

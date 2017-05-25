@@ -50,25 +50,7 @@ class Member_Chi_Restrict_Content_Pro_Integration extends Member_Chi_Membership_
 			'old_status' => $old_status,
 		);
 
-		switch ( $new_status ) {
-			case 'pending':
-				$body['event_type'] = 'membership_pending';
-				break;
-			case 'free':
-				$body['event_type'] = 'membership_free';
-				break;
-			case 'active':
-				$body['event_type'] = 'membership_active';
-				break;
-			case 'expired':
-				$body['event_type'] = 'membership_expired';
-				break;
-			case 'cancelled':
-				$body['event_type'] = 'membership_cancelled';
-				break;
-			default:
-				$body['event_type'] = $new_status;
-		}
+		$body['event_type'] = 'restrictcontentpro.membership.' . $new_status;
 
 		// If this is a new subscription, set the join date.
 		if ( '' === $old_status ) {

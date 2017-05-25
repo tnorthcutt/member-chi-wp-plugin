@@ -53,7 +53,7 @@ class Member_Chi_Wp_Complete_Integration extends Member_Chi_Membership_Plugin_In
 			'email' => $user->user_email,
 			'wp_id' => $args['user_id'],
 			'team_id' => $this->team_hash,
-			'event_type' => 'post.complete',
+			'event_type' => 'wpcomplete.post.complete',
 			'post_id' => $args['post_id'],
 			'button_id' => $args['button_id'],
 		);
