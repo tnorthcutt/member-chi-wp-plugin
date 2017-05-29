@@ -16,7 +16,7 @@
  * Plugin Name:       Member Chi
  * Plugin URI:        https://memberchi.com
  * Description:       This plugin connects your site to the Chi app at https://app.memberchi.com
- * Version:           1.1.2
+ * Version:           1.1.3
  * Author:            Member Chi
  * Author URI:        https://memberchi.com
  * License:           GPL-2.0+
