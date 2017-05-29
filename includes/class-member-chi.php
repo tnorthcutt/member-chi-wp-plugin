@@ -156,8 +156,8 @@ class Member_Chi {
 		add_action( 'admin_enqueue_scripts', array($plugin_admin, 'enqueue_styles') );
 		add_action( 'admin_enqueue_scripts', array($plugin_admin, 'enqueue_scripts') );
 
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'user_upload' );
-		$this->loader->add_action( 'member_chi_user_upload_add_batch', $plugin_admin, 'member_chi_user_upload', 10, 3 );
+		add_action( 'admin_init', array($plugin_admin, 'user_upload' ) );
+		add_action( 'member_chi_user_upload_add_batch', array( $plugin_admin, 'member_chi_user_upload', 10, 3 ) );
 		add_action( 'admin_init', array($plugin_admin, 'csv_export') );
 
 	}
