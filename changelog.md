@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.4 - June 18, 2017
+- Add joined date information from RCP
+
 ## 1.1.3 - May 29, 2017
 - Fix stupid bug leftover from switching away from WPPB loader thing
 
