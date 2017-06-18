@@ -112,6 +112,7 @@ class Member_Chi_Public {
 		// Set other options we need
 		$options['team_id'] = member_chi_get_option( '_member_chi_team_id' );
 		$options['email']   = $user->user_email;
+		$options['joined_at'] = member_chi_joined_at($user);
 
 		// Pass data to js
 		wp_localize_script( $this->plugin_name, 'options', $options );
@@ -121,4 +122,16 @@ class Member_Chi_Public {
 
 	}
 
+}
+
+/**
+ * @param $user WP_User
+ * @return string
+ */
+function member_chi_joined_at($user) {
+	if ( class_exists( 'RCP_Member' ) ) {
+		$member = new RCP_Member( $user );
+		return $member->get_joined_date();
+	}
+	return '';
 }
