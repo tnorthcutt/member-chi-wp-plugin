@@ -110,9 +110,11 @@ class Member_Chi_Public {
 		$options['url']     = member_chi_get_app_url() . '/0.1/userevents.js';
 
 		// Set other options we need
-		$options['team_id'] = member_chi_get_option( '_member_chi_team_id' );
-		$options['email']   = $user->user_email;
-		$options['joined_at'] = member_chi_joined_at($user);
+		$options['team_id']        = member_chi_get_option( '_member_chi_team_id' );
+		$options['email']          = $user->user_email;
+		$options['joined_at']      = member_chi_joined_at( $user );
+		$options['will_expire_at'] = member_chi_expires_at( $user );
+
 
 		// Pass data to js
 		wp_localize_script( $this->plugin_name, 'options', $options );
@@ -131,7 +133,17 @@ class Member_Chi_Public {
 function member_chi_joined_at($user) {
 	if ( class_exists( 'RCP_Member' ) ) {
 		$member = new RCP_Member( $user );
+		// returns date as a string in the format 2016-08-18 20:24:13
 		return $member->get_joined_date();
+	}
+	return '';
+}
+
+function member_chi_expires_at($user) {
+	if ( class_exists( 'RCP_Member' ) ) {
+		$member = new RCP_Member( $user );
+		// returns date as a string in the format 2016-08-18 20:24:13
+		return $member->get_expiration_date();
 	}
 	return '';
 }
