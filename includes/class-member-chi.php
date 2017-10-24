@@ -121,7 +121,7 @@ class Member_Chi {
 		/**
 		 * The class responsible for handling membership plugin integrations
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/integrations/class-member-chi-membership-plugin-integrations.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/integrations/class-membership-plugin-integrations.php';
 
 	}
 
