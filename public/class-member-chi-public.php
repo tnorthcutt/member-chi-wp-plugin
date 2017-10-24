@@ -133,8 +133,19 @@ class Member_Chi_Public {
 function member_chi_joined_at($user) {
 	if ( class_exists( 'RCP_Member' ) ) {
 		$member = new RCP_Member( $user );
+
 		// returns date as a string in the format 2016-08-18 20:24:13
 		return $member->get_joined_date();
+	}
+
+	// For MemberPress, we need to get the oldest transaction for a user, which represents their join date
+	if ( class_exists( 'MeprUser' ) ) {
+		$member = new MeprUser( $user->ID );
+		$transactions = $member->transactions();
+		$oldest = end($transactions);
+
+		// returns date as a string in the format 2016-08-18 20:24:13
+		return $oldest->created_at;
 	}
 	return '';
 }
