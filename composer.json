@@ -1,6 +1,6 @@
 {
-    "name": "tnorthcutt/member-chi-wp-plugin",
-    "description": "WP Plugin for connecting to Member Chi service",
+    "name": "tnorthcutt/member-score-wp-plugin",
+    "description": "WP Plugin for connecting to the MemberScore app",
     "type": "wordpress-plugin",
     "require": {
         "composer/installers": "^1.1",

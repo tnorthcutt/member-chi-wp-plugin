@@ -8,8 +8,8 @@
  * @link       https://memberup.co
  * @since      0.1.0
  *
- * @package    Member_Chi
- * @subpackage Member_Chi/public/partials
+ * @package    MemberScore
+ * @subpackage MemberScore/public/partials
  */
 ?>
 

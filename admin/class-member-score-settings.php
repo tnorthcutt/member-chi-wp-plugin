@@ -1,25 +1,25 @@
 <?php
 
 /**
- * Class Member_Chi_Settings
+ * Class MemberScore_Settings
  *
- * @package    Member_Chi
- * @subpackage Member_Chi/settings
+ * @package    MemberScore
+ * @subpackage MemberScore/settings
  * @author     Member Up <travis@memberup.co>
  */
-class Member_Chi_Settings {
+class MemberScore_Settings {
 
 	/**
 	 * Option key, and option page slug
 	 * @var string
 	 */
-	private $key = 'member_chi_options';
+	private $key = 'member_score_options';
 
 	/**
 	 * Options page metabox id
 	 * @var string
 	 */
-	private $metabox_id = 'member_chi_option_metabox';
+	private $metabox_id = 'member_score_option_metabox';
 
 	/**
 	 * Options Page title
@@ -36,7 +36,7 @@ class Member_Chi_Settings {
 	/**
 	 * Holds an instance of the object
 	 *
-	 * @var Member_Chi_Settings
+	 * @var MemberScore_Settings
 	 **/
 	private static $instance = null;
 
@@ -46,13 +46,13 @@ class Member_Chi_Settings {
 	 */
 	private function __construct() {
 		// Set our title
-		$this->title = __( 'Member Chi', 'member-chi' );
+		$this->title = __( 'MemberScore', 'member-score' );
 	}
 
 	/**
 	 * Returns the running object
 	 *
-	 * @return Member_Chi_Settings
+	 * @return MemberScore_Settings
 	 **/
 	public static function get_instance() {
 		if( is_null( self::$instance ) ) {
@@ -100,13 +100,13 @@ class Member_Chi_Settings {
 		?>
 		<div class="wrap cmb2-options-page <?php echo $this->key; ?>">
 			<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
-			<div class="cmb-row cmb-type-text cmb2-id--member-chi-api-key table-layout" data-fieldtype="text">
+			<div class="cmb-row cmb-type-text cmb2-id--member-score-api-key table-layout" data-fieldtype="text">
 				<div class="cmb-th">
-					<label for="_member_chi_api_key">Export WP Users</label>
+					<label for="_member_score_api_key">Export WP Users</label>
 				</div>
 				<div class="cmb-td">
-					<a href="<?php echo wp_nonce_url( menu_page_url( $this->key, false ), 'csv_export', 'memberchi_wp_users_upload' ); ?>" class="button-secondary">Send to Chi</a>
-					<a href="<?php echo wp_nonce_url( menu_page_url( $this->key, false ), 'csv_export', 'memberchi_wp_users_export' ); ?>" class="button-secondary">Export to CSV</a>
+					<a href="<?php echo wp_nonce_url( menu_page_url( $this->key, false ), 'csv_export', 'member_score_wp_users_upload' ); ?>" class="button-secondary">Send to MemberScore</a>
+					<a href="<?php echo wp_nonce_url( menu_page_url( $this->key, false ), 'csv_export', 'member_score_wp_users_export' ); ?>" class="button-secondary">Export to CSV</a>
 				</div>
 			</div>
 			<?php cmb2_metabox_form( $this->metabox_id, $this->key ); ?>
@@ -120,7 +120,7 @@ class Member_Chi_Settings {
 	 */
 	function add_options_page_metabox() {
 
-		$prefix = '_member_chi_';
+		$prefix = '_member_score_';
 
 		// hook in our save notices
 		add_action( "cmb2_save_options-page_fields_{$this->metabox_id}", array( $this, 'settings_notices' ), 10, 2 );
@@ -137,25 +137,25 @@ class Member_Chi_Settings {
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'API Key', 'member-chi' ),
+			'name' => __( 'API Key', 'member-score' ),
 			'id' => $prefix . 'api_key',
 			'type' => 'text',
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Dev API Key', 'member-chi' ),
+			'name' => __( 'Dev API Key', 'member-score' ),
 			'id' => $prefix . 'dev_api_key',
 			'type' => 'text',
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Team ID', 'member-chi' ),
+			'name' => __( 'Team ID', 'member-score' ),
 			'id' => $prefix . 'team_id',
 			'type' => 'text',
 		) );
 
 		$cmb->add_field( array(
-			'name' => __( 'Debug mode', 'member-chi' ),
+			'name' => __( 'Debug mode', 'member-score' ),
 			'id' => $prefix . 'debug',
 			'type' => 'checkbox',
 		) );
@@ -175,7 +175,7 @@ class Member_Chi_Settings {
 			return;
 		}
 
-		add_settings_error( $this->key . '-notices', '', __( 'Settings updated.', 'member-chi' ), 'updated' );
+		add_settings_error( $this->key . '-notices', '', __( 'Settings updated.', 'member-score' ), 'updated' );
 		settings_errors( $this->key . '-notices' );
 	}
 
@@ -199,12 +199,12 @@ class Member_Chi_Settings {
 }
 
 /**
- * Helper function to get/return the Member_Chi_Settings object
+ * Helper function to get/return the MemberScore_Settings object
  * @since  0.1.0
- * @return Member_Chi_Settings object
+ * @return MemberScore_Settings object
  */
-function member_chi_settings() {
-	return Member_Chi_Settings::get_instance();
+function member_score_settings() {
+	return MemberScore_Settings::get_instance();
 }
 
 /**
@@ -213,13 +213,13 @@ function member_chi_settings() {
  * @param  string  $key Options array key
  * @return mixed        Option value
  */
-function member_chi_get_option( $key = '' ) {
-	return cmb2_get_option( member_chi_settings()->key, $key );
+function member_score_get_option( $key = '' ) {
+	return cmb2_get_option( member_score_settings()->key, $key );
 }
 
-function member_chi_get_app_url() {
-    return ( member_chi_get_option( '_member_chi_debug' ) ? 'https://chi.dev' : 'https://app.memberchi.com' );
+function member_score_get_app_url() {
+    return ( member_score_get_option( '_member_score_debug' ) ? 'https://chi.dev' : 'https://app.memberchi.com' );
 }
 
 // Get it started
-member_chi_settings();
+member_score_settings();

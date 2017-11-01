@@ -3,11 +3,11 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @package    Member_Chi
- * @subpackage Member_Chi/admin
+ * @package    MemberScore
+ * @subpackage MemberScore/admin
  * @author     Member Up <travis@memberup.co>
  */
-class Member_Chi_Admin {
+class MemberScore_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -47,21 +47,7 @@ class Member_Chi_Admin {
 	 * @since    0.1.0
 	 */
 	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Member_Chi_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Member_Chi_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/member-chi-admin.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/member-score-admin.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -70,26 +56,12 @@ class Member_Chi_Admin {
 	 * @since    0.1.0
 	 */
 	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Member_Chi_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Member_Chi_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/member-chi-admin.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/member-score-admin.js', array( 'jquery' ), $this->version, false );
 	}
 
 	public function user_upload() {
-		if ( isset( $_GET['memberchi_wp_users_upload'] ) ) {
-			if ( ! wp_verify_nonce( $_GET['memberchi_wp_users_upload'], 'csv_export' ) ) {
+		if ( isset( $_GET['member_score_wp_users_upload'] ) ) {
+			if ( ! wp_verify_nonce( $_GET['member_score_wp_users_upload'], 'csv_export' ) ) {
 				wp_die( 'Something went wrong, please try again.' );
 			}
 			$users = get_users(
@@ -106,18 +78,18 @@ class Member_Chi_Admin {
 
 			foreach ( $batches as $batch_key => $batch ) {
 				// Schedule batches in 1 hour intervals
-				wp_schedule_single_event( time() + ( 3600 * ( $batch_key + 1 ) ), 'member_chi_user_upload_add_batch', $batch );
+				wp_schedule_single_event( time() + ( 3600 * ( $batch_key + 1 ) ), 'member_score_user_upload_add_batch', $batch );
 			}
 		} // End if().
 	}
 
-	public function member_chi_user_upload( $batch ) {
+	public function member_score_user_upload( $batch ) {
 			// @TODO Make API call to upload users
 	}
 
 	public function csv_export() {
-		if ( isset( $_GET['memberchi_wp_users_export'] ) ) {
-			if ( ! wp_verify_nonce( $_GET['memberchi_wp_users_export'], 'csv_export' ) ) {
+		if ( isset( $_GET['member_score_wp_users_export'] ) ) {
+			if ( ! wp_verify_nonce( $_GET['member_score_wp_users_export'], 'csv_export' ) ) {
 				wp_die( 'Something went wrong, please try again.' );
 			}
 			$users = get_users(
@@ -157,7 +129,7 @@ class Member_Chi_Admin {
 			fclose( $output_handle );
 			die();
 
-			wp_safe_redirect( menu_page_url( 'member_chi_options', false ) );
+			wp_safe_redirect( menu_page_url( 'member_score_options', false ) );
 			exit;
 		} // End if().
 	}

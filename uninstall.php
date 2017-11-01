@@ -22,7 +22,7 @@
  * @link       https://memberup.co
  * @since      0.1.0
  *
- * @package    Member_Chi
+ * @package    MemberScore
  */
 
 // If uninstall not called from WordPress, then exit.

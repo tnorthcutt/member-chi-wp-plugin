@@ -6,11 +6,11 @@
  * @link       https://memberup.co
  * @since      0.1.0
  *
- * @package    Member_Chi
- * @subpackage Member_Chi/public
+ * @package    MemberScore
+ * @subpackage MemberScore/public
  * @author     Member Up <travis@memberup.co>
  */
-class Member_Chi_Public {
+class MemberScore_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -51,22 +51,8 @@ class Member_Chi_Public {
 	 * @since    0.1.0
 	 */
 	public function enqueue_styles() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Member_Chi_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Member_Chi_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/member-chi-public.css', array(),
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/member-score-public.css', array(),
 			$this->version, 'all' );
-
 	}
 
 	/**
@@ -75,20 +61,7 @@ class Member_Chi_Public {
 	 * @since    0.1.0
 	 */
 	public function enqueue_scripts() {
-
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Member_Chi_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Member_Chi_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/member-chi-public.js',
+		wp_register_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/member-score-public.js',
 			array( 'jquery' ), $this->version, false );
 
 		// Set up empty options array
@@ -103,17 +76,17 @@ class Member_Chi_Public {
 		}
 
 		// Are we in debug mode?
-		$options['debug'] = member_chi_get_option( '_member_chi_debug' ) ? true : false;
+		$options['debug'] = member_score_get_option( '_member_score_debug' ) ? true : false;
 
 		// Use appropriate options based on debug mode (or not)
-		$options['api_key'] = $options['debug'] ? member_chi_get_option( '_member_chi_dev_api_key' ) : member_chi_get_option( '_member_chi_api_key' );
-		$options['url']     = member_chi_get_app_url() . '/0.1/userevents.js';
+		$options['api_key'] = $options['debug'] ? member_score_get_option( '_member_score_dev_api_key' ) : member_score_get_option( '_member_score_api_key' );
+		$options['url']     = member_score_get_app_url() . '/0.1/userevents.js';
 
 		// Set other options we need
-		$options['team_id']        = member_chi_get_option( '_member_chi_team_id' );
+		$options['team_id']        = member_score_get_option( '_member_score_team_id' );
 		$options['email']          = $user->user_email;
-		$options['joined_at']      = member_chi_joined_at( $user );
-		$options['will_expire_at'] = member_chi_expires_at( $user );
+		$options['joined_at']      = member_score_joined_at( $user );
+		$options['will_expire_at'] = member_score_expires_at( $user );
 
 
 		// Pass data to js
@@ -130,7 +103,7 @@ class Member_Chi_Public {
  * @param $user WP_User
  * @return string
  */
-function member_chi_joined_at($user) {
+function member_score_joined_at($user) {
 	if ( class_exists( 'RCP_Member' ) ) {
 		$member = new RCP_Member( $user );
 
@@ -150,7 +123,7 @@ function member_chi_joined_at($user) {
 	return '';
 }
 
-function member_chi_expires_at($user) {
+function member_score_expires_at($user) {
 	if ( class_exists( 'RCP_Member' ) ) {
 		$member = new RCP_Member( $user );
 		// returns date as a string in the format 2016-08-18 20:24:13

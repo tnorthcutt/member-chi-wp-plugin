@@ -2,17 +2,17 @@
 
 /**
  * @since      1.2
- * @package    Member_Chi
- * @subpackage Member_Chi/includes/integrations
+ * @package    MemberScore
+ * @subpackage MemberScore/includes/integrations
  * @author     Member Up <travis@memberup.co>
  */
-class Member_Chi_WooCommerce_Memberships_Integration extends Member_Chi_Membership_Plugin_Integration {
+class MemberScore_WooCommerce_Memberships_Integration extends MemberScore_Membership_Plugin_Integration {
 
 	private $url;
 	private $statuses;
 
 	/**
-	 * Member_Chi_WooCommerce_Memberships_Integration constructor.
+	 * MemberScore_WooCommerce_Memberships_Integration constructor.
 	 */
 	public function __construct() {
 		parent::construct();

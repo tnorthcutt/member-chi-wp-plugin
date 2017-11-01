@@ -7,11 +7,11 @@
  * so that it is ready for translation.
  *
  * @since      0.1.0
- * @package    Member_Chi
- * @subpackage Member_Chi/includes
+ * @package    MemberScore
+ * @subpackage MemberScore/includes
  * @author     Member Up <travis@memberup.co>
  */
-class Member_Chi_i18n {
+class MemberScore_i18n {
 
 
 	/**
@@ -22,7 +22,7 @@ class Member_Chi_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'member-chi',
+			'member-score',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

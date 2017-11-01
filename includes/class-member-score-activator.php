@@ -6,11 +6,11 @@
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      0.1.0
- * @package    Member_Chi
- * @subpackage Member_Chi/includes
+ * @package    MemberScore
+ * @subpackage MemberScore/includes
  * @author     Member Up <travis@memberup.co>
  */
-class Member_Chi_Activator {
+class MemberScore_Activator {
 
 	/**
 	 * Short Description. (use period)
