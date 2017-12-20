@@ -51,7 +51,7 @@ class MemberScore {
 	public function __construct() {
 
 		$this->plugin_name = 'member-score';
-		$this->version = '1.0';
+		$this->version = '1.2';
 	}
 
 	/**
@@ -68,7 +68,7 @@ class MemberScore {
 	 * @return object|MemberScore The one true MemberScore
 	 */
 	public static function instance() {
-		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Easy_Digital_Downloads ) ) {
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof MemberScore ) ) {
 			self::$instance = new MemberScore;
 
 			self::$instance->includes();

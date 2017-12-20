@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2 - December 20, 2017
+- Add MemberPress and MemberMouse integrations
+- send API token to MemberScore app
+- Rename to MemberScore
+
 ## 1.1.4 - June 18, 2017
 - Add joined date information from RCP
 
