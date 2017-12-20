@@ -18,7 +18,7 @@ class MemberScore_WooCommerce_Memberships_Integration extends MemberScore_Member
 		parent::construct();
 
 		$this->define_hooks();
-		$this->url = $this->app_url . '/integration/woocommerce-memberships/' . $this->team_hash;
+		$this->url = $this->app_url . '/integration/woocommerce-memberships/' . $this->team_hash . '?api_token=' . $this->api_key;
 		$this->statuses = array(
 			'active',
 			'expired',

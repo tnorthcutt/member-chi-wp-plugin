@@ -18,7 +18,7 @@ class MemberScore_BBPress_Integration extends MemberScore_Membership_Plugin_Inte
 		parent::construct();
 
 		$this->define_hooks();
-		$this->url = $this->app_url . '/integration/bbpress/' . $this->team_hash;
+		$this->url = $this->app_url . '/integration/bbpress/' . $this->team_hash . '?api_token=' . $this->api_key;
 		$this->statuses = array(
 			'active',
 			'expired',

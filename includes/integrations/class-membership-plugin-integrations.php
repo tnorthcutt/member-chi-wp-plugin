@@ -41,7 +41,7 @@ class MemberScore_Membership_Plugin_Integrations {
 			new MemberScore_Wp_Complete_Integration();
 		}
 
-		if ( class_exists( 'WooCommerce' ) && is_plugin_active( 'woocommerce-memberships/woocommerce-memberships.php' ) ) {
+		if ( class_exists( 'WooCommerce' ) && class_exists( 'WC_Memberships' ) ) {
 			require_once dirname( __FILE__ ) . '/woocommerce-memberships/class-woocommerce-memberships-integration.php';
 			new MemberScore_WooCommerce_Memberships_Integration();
 		}
@@ -56,6 +56,10 @@ class MemberScore_Membership_Plugin_Integrations {
 			new MemberScore_MemberPress_Integration();
 		}
 
+		if ( class_exists( 'MemberMouse' ) ) {
+            require_once dirname ( __FILE__ ) . '/membermouse/class-membermouse-integration.php';
+            new MemberScore_MemberMouse_Integration();
+        }
 	}
 
 }

@@ -10,9 +10,11 @@ abstract class MemberScore_Membership_Plugin_Integration {
 
 	protected $team_hash;
 	protected $app_url;
+	protected $api_key;
 
 	public function construct() {
 		$this->team_hash = member_score_get_option( '_member_score_team_id' );
+		$this->api_key = member_score_get_option( '_member_score_api_key' );
 		$this->app_url = member_score_get_app_url();
 	}
 

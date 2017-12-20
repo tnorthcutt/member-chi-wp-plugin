@@ -18,7 +18,7 @@ class MemberScore_Restrict_Content_Pro_Integration extends MemberScore_Membershi
 		parent::construct();
 
 		$this->define_hooks();
-		$this->url = $this->app_url . '/integration/restrictcontentpro/' . $this->team_hash;
+		$this->url = $this->app_url . '/integration/restrictcontentpro/' . $this->team_hash . '?api_token=' . $this->api_key;
 		$this->statuses = array(
 			'active',
 			'expired',
@@ -44,9 +44,9 @@ class MemberScore_Restrict_Content_Pro_Integration extends MemberScore_Membershi
 	 */
 	public function status_change( $new_status, $rcp_member_id, $old_status, $rcp_member ) {
 		$body = array(
-			'email' => $rcp_member->user_email,
-			'wp_id' => $rcp_member->ID,
-			'team_id' => $this->team_hash,
+			'email'      => $rcp_member->user_email,
+			'wp_id'      => $rcp_member->ID,
+			'team_id'    => $this->team_hash,
 			'old_status' => $old_status,
 		);
 
@@ -61,9 +61,10 @@ class MemberScore_Restrict_Content_Pro_Integration extends MemberScore_Membershi
 
 		$response = $this->post( $this->url, $body );
 
-		error_log( print_r( $response, true ) );
+		error_log( print_r( 'Response code: ' . $response['response']['code'], true ) );
 
-		error_log( $this->url );
+		error_log( print_r( 'Body:' ) );
+		error_log( print_r( $body, true ));
 
 	}
 

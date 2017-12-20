@@ -120,6 +120,13 @@ function member_score_joined_at($user) {
 		// returns date as a string in the format 2016-08-18 20:24:13
 		return $oldest->created_at;
 	}
+
+	if ( class_exists( 'MM_User' ) ) {
+	    $member = new MM_User( $user->ID );
+
+        // returns date as a string in the format 2016-08-18 20:24:13
+        return $member->getRegistrationDate();
+    }
 	return '';
 }
 
