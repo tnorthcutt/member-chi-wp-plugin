@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2.1 - December 21, 2017
+- Bugfix
+
 ## 1.2 - December 20, 2017
 - Add MemberPress and MemberMouse integrations
 - send API token to MemberScore app
