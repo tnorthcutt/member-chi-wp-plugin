@@ -49,9 +49,8 @@ class MemberScore {
 	 * @since    0.1.0
 	 */
 	public function __construct() {
-
 		$this->plugin_name = 'member-score';
-		$this->version = '1.2.1';
+		$this->version     = '1.2.2';
 	}
 
 	/**

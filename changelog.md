@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.2.2 - February 23, 2018
+- Remove extra logging
+
 ## 1.2.1 - December 21, 2017
 - Bugfix
 
