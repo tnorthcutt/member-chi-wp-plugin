@@ -51,9 +51,9 @@ class MemberScore_WooCommerce_Memberships_Integration extends MemberScore_Member
 		$user = get_userdata( $args['user_id'] );
 
 		$body = array(
-			'email' => $user->user_email,
-			'wp_id' => $args['user_id'],
-			'membership_plan' => $membership_plan->id,
+			'email'              => $user->user_email,
+			'wp_id'              => $args['user_id'],
+			'membership_plan'    => $membership_plan->id,
 			'user_membership_id' => $args['user_membership_id'],
 		);
 
@@ -61,15 +61,10 @@ class MemberScore_WooCommerce_Memberships_Integration extends MemberScore_Member
 			$body['event_type'] = 'woocommerce.membership.updated';
 		} else {
 			$body['event_type'] = 'woocommerce.membership.new';
-			$body['date_join'] = time();
+			$body['date_join']  = time();
 		}
 
 		$response = $this->post( $this->url, $body );
-
-		error_log( print_r( $response, true ) );
-
-		error_log( $this->url );
-
 	}
 
 	/**
@@ -78,21 +73,16 @@ class MemberScore_WooCommerce_Memberships_Integration extends MemberScore_Member
 	public function membership_cancelled( $user_membership_id ) {
 
 		$user_membership = get_post( $user_membership_id );
-		$user = get_userdata( $user_membership->post_author );
+		$user            = get_userdata( $user_membership->post_author );
 
 		$body = array(
-			'email' => $user->user_email,
-			'wp_id' => $user_membership->post_author,
+			'email'              => $user->user_email,
+			'wp_id'              => $user_membership->post_author,
 			'user_membership_id' => $user_membership_id,
-			'event_type' => 'woocommerce.membership.cancelled',
+			'event_type'         => 'woocommerce.membership.cancelled',
 		);
 
 		$response = $this->post( $this->url, $body );
-
-		error_log( print_r( $response, true ) );
-
-		error_log( $this->url );
-
 	}
 
 	/**
@@ -105,11 +95,11 @@ class MemberScore_WooCommerce_Memberships_Integration extends MemberScore_Member
 		$user = get_userdata( $user_membership->user_id );
 
 		$body = array(
-			'email' => $user->user_email,
-			'wp_id' => $user_membership->user_id,
+			'email'              => $user->user_email,
+			'wp_id'              => $user_membership->user_id,
 			'user_membership_id' => $user_membership->id,
-			'event_type' => $new_status,
-			'old_status' => $old_status,
+			'event_type'         => $new_status,
+			'old_status'         => $old_status,
 		);
 
 		if ( 'expired' === $new_status ) {
@@ -117,11 +107,6 @@ class MemberScore_WooCommerce_Memberships_Integration extends MemberScore_Member
 		}
 
 		$response = $this->post( $this->url, $body );
-
-		error_log( print_r( $response, true ) );
-
-		error_log( $this->url );
-
 	}
 
 }

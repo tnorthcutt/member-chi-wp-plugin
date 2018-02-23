@@ -43,21 +43,15 @@ class MemberScore_BBPress_Integration extends MemberScore_Membership_Plugin_Inte
 	 * @param int $topic_author
 	 */
 	public function new_topic( $topic_id, $forum_id, $anonymous_data, $topic_author ) {
-
 		$user = get_userdata( $topic_author );
 
 		$body = array(
-			'email' => $user->user_email,
-			'wp_id' => $topic_author,
+			'email'      => $user->user_email,
+			'wp_id'      => $topic_author,
 			'event_type' => 'bbpress.topic.created',
 		);
 
 		$response = $this->post( $this->url, $body );
-
-		error_log( print_r( $response, true ) );
-
-		error_log( $this->url );
-
 	}
 
 	/**
@@ -74,18 +68,13 @@ class MemberScore_BBPress_Integration extends MemberScore_Membership_Plugin_Inte
 		$user = get_userdata( $reply_author );
 
 		$body = array(
-			'email' => $user->user_email,
-			'wp_id' => $reply_author,
-			'reply_id' => $reply_id,
-			'topic' => $topic_id,
+			'email'      => $user->user_email,
+			'wp_id'      => $reply_author,
+			'reply_id'   => $reply_id,
+			'topic'      => $topic_id,
 			'event_type' => 'bbpress.topic.replied',
 		);
 
 		$response = $this->post( $this->url, $body );
-
-		error_log( print_r( $response, true ) );
-
-		error_log( $this->url );
-
 	}
 }

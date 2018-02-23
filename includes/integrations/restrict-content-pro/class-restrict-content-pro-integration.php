@@ -60,12 +60,6 @@ class MemberScore_Restrict_Content_Pro_Integration extends MemberScore_Membershi
 		}
 
 		$response = $this->post( $this->url, $body );
-
-		error_log( print_r( 'Response code: ' . $response['response']['code'], true ) );
-
-		error_log( print_r( 'Body:' ) );
-		error_log( print_r( $body, true ));
-
 	}
 
 }

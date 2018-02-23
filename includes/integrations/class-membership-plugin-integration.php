@@ -23,16 +23,16 @@ abstract class MemberScore_Membership_Plugin_Integration {
 		$body = json_encode( $body );
 
 		$defaults = array(
-			'body' => $body,
-			'timeout' => '5',
+			'body'        => $body,
+			'timeout'     => '5',
 			'redirection' => '5',
 			'httpversion' => '1.0',
-			'blocking' => true,
-			'headers' => array(
+			'blocking'    => true,
+			'headers'     => array(
 				'Content-Type' => 'application/json'
 			),
-			'cookies' => array(),
-			'sslverify' => false,
+			'cookies'     => array(),
+			'sslverify'   => false,
 		);
 
 		$args = wp_parse_args( $args, $defaults );

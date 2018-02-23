@@ -53,11 +53,6 @@ class MemberScore_MemberPress_Integration extends MemberScore_Membership_Plugin_
 		$body['event_type'] = 'memberpress.membership.cancelled';
 
 		$response = $this->post( $this->url, $body );
-
-		error_log( print_r( 'Response code: ' . $response['response']['code'], true ) );
-
-		error_log( print_r( 'Body:' ) );
-		error_log( print_r( $body, true ));
 	}
 
 	/**
@@ -78,11 +73,6 @@ class MemberScore_MemberPress_Integration extends MemberScore_Membership_Plugin_
 		$body['event_type'] = 'memberpress.membership.expired';
 
 		$response = $this->post( $this->url, $body );
-
-		error_log( print_r( 'Response code: ' . $response['response']['code'], true ) );
-
-		error_log( print_r( 'Body:' ) );
-		error_log( print_r( $body, true ));
 	}
 
 }
