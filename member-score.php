@@ -8,14 +8,14 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://memberup.co
+ * @link              https://memberscore.io
  * @since             0.1.0
  * @package           MemberScore
  *
  * @wordpress-plugin
  * Plugin Name:       MemberScore
- * Plugin URI:        https://memberscoreapp.com
- * Description:       This plugin connects your site to the MemberScore app at https://memberscoreapp.com
+ * Plugin URI:        https://memberscore.io
+ * Description:       This plugin connects your site to the MemberScore app at https://app.memberscore.io
  * Version:           1.2.2
  * Author:            Travis Northcutt
  * Author URI:        https://memberup.co
