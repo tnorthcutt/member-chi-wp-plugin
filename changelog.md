@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.3.0 – November 2, 2018
+- Change app domain from memberscoreapp.com to app.memberscore.io
+
 ## 1.2.2 - February 23, 2018
 - Remove extra logging
 
