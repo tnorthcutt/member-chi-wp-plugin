@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.3.1 – November 6, 2018
+- Fix URL generation for WPComplete integration; now it correctly uses the API token
+
 ## 1.3.0 – November 2, 2018
 - Change app domain from memberscoreapp.com to app.memberscore.io
 
