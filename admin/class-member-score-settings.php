@@ -218,7 +218,7 @@ function member_score_get_option( $key = '' ) {
 }
 
 function member_score_get_app_url() {
-    return ( member_score_get_option( '_member_score_debug' ) ? 'https://chi.dev' : 'https://app.memberscore.io' );
+    return ( member_score_get_option( '_member_score_debug' ) ? 'https://chi.test' : 'https://app.memberscore.io' );
 }
 
 // Get it started
