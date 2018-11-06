@@ -18,7 +18,7 @@ class MemberScore_Wp_Complete_Integration extends MemberScore_Membership_Plugin_
 		parent::construct();
 
 		$this->define_hooks();
-		$this->url = $this->app_url . '/integration/wpcomplete/' . $this->team_hash;
+		$this->url = $this->app_url . '/integration/wpcomplete/' . $this->team_hash . '?api_token=' . $this->api_key;
 		$this->statuses = array(
 			'active',
 			'expired',
