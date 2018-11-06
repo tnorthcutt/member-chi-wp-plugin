@@ -33,7 +33,13 @@ class MemberScore_Wp_Complete_Integration extends MemberScore_Membership_Plugin_
 	 */
 	private function define_hooks() {
 		add_action( 'wpcomplete_mark_completed', array( $this, 'mark_completed' ), 10, 1 );
-		add_action( 'wpcomplete_mark_incomplete', array( $this, 'mark_incomplete' ), 10, 1 );
+
+		/**
+		 * We could also log an event for marking incomplete, but we're going to pass on this for now
+		 * In the future, if there's really a need for this, we can add it.
+		 *
+		 * add_action( 'wpcomplete_mark_incomplete', array( $this, 'mark_incomplete' ), 10, 1 );
+		 */
 	}
 
 
@@ -78,7 +84,7 @@ class MemberScore_Wp_Complete_Integration extends MemberScore_Membership_Plugin_
 			'email' => $user->user_email,
 			'wp_id' => $args['user_id'],
 			'team_id' => $this->team_hash,
-			'event_type' => $args['post_status'],
+			'event_type' => 'wpcomplete.post.incomplete',
 			'post_id' => $args['post_id'],
 			'button_id' => $args['button_id'],
 		);
