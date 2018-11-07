@@ -7,8 +7,6 @@ if ( ! class_exists( 'GHU_Core' ) ) {
     {
         public $update_data = array();
         public $active_plugins = array();
-        public $token = '2bef6f87a6b231bf0c6a78823d58064d5a979903';
-
 
         function __construct() {
             add_action( 'admin_init', array( $this, 'admin_init' ) );
@@ -58,7 +56,7 @@ if ( ! class_exists( 'GHU_Core' ) ) {
 
                     // get plugin tags
                     list( $owner, $repo ) = explode( '/', $temp['github_repo'] );
-                    $request = wp_remote_get( "https://api.github.com/repos/$owner/$repo/tags?access_token=$this->token" );
+                    $request = wp_remote_get( "https://api.github.com/repos/$owner/$repo/tags" );
 
                     // WP error or rate limit exceeded
                     if ( is_wp_error( $request ) || 200 != wp_remote_retrieve_response_code( $request ) ) {
