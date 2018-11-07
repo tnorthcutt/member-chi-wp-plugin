@@ -69,7 +69,7 @@ if ( ! class_exists( 'GHU_Core' ) ) {
 
                     if ( is_array( $json ) && ! empty( $json ) ) {
                         $latest_tag = $json[0];
-                        $temp['new_version'] = $latest_tag['name'];
+                        $temp['new_version'] = str_replace( 'v', '', $latest_tag['name'] );
                         $temp['url'] = "https://github.com/$owner/$repo/";
                         $temp['package'] = $latest_tag['zipball_url'];
                         $plugin_data[ $slug ] = $temp;
@@ -92,7 +92,7 @@ if ( ! class_exists( 'GHU_Core' ) ) {
                     return (object) array(
                         'name'          => $plugin['name'],
                         'slug'          => $plugin['plugin'],
-                        'version'       => $plugin['new_version'],
+                        'version'       => str_replace( 'v', '', $plugin['new_version'] ),
                         'requires'      => '4.4',
                         'tested'        => get_bloginfo( 'version' ),
                         'last_updated'  => date( 'Y-m-d' ),
@@ -116,8 +116,9 @@ if ( ! class_exists( 'GHU_Core' ) ) {
                 if ( isset( $this->active_plugins[ $plugin ] ) ) {
                     $plugin_data = get_plugin_data( WP_PLUGIN_DIR . '/' . $plugin );
                     $version = $plugin_data['Version'];
+                    $new_version = str_replace( 'v', '', $info['new_version'] );
 
-                    if ( version_compare( $version, $info['new_version'], '<' ) ) {
+                    if ( version_compare( $version, $new_version, '<' ) ) {
                         $transient->response[ $plugin ] = (object) $info;
                     }
                 }
