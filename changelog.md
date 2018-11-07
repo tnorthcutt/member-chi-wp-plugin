@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.3.2 – November 6, 2018
+- Get Github updating to work properly for the plugin
+
 ## 1.3.1 – November 6, 2018
 - Fix URL generation for WPComplete integration; now it correctly uses the API token
 

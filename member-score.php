@@ -16,7 +16,7 @@
  * Plugin Name:       MemberScore
  * Plugin URI:        https://memberscore.io
  * Description:       This plugin connects your site to the MemberScore app at https://app.memberscore.io
- * Version:           1.3.1
+ * Version:           1.3.2
  * Author:            Travis Northcutt
  * Author URI:        https://memberup.co
  * License:           GPL-2.0+
