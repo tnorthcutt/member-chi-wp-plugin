@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.3.3 – November 6, 2018
+- Remove Github access token
+
 ## 1.3.2 – November 6, 2018
 - Get Github updating to work properly for the plugin
 
