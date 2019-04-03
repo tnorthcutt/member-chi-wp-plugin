@@ -50,7 +50,7 @@ class MemberScore {
 	 */
 	public function __construct() {
 		$this->plugin_name = 'member-score';
-		$this->version     = '1.3.3';
+		$this->version     = '1.4.0';
 	}
 
 	/**

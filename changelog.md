@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.4.0 – April 3, 2019
+- Hide dev API key field and user export controls
+
 ## 1.3.3 – November 6, 2018
 - Remove Github access token
 
