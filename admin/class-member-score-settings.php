@@ -100,17 +100,22 @@ class MemberScore_Settings {
 		?>
 		<div class="wrap cmb2-options-page <?php echo $this->key; ?>">
 			<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
-			<div class="cmb-row cmb-type-text cmb2-id--member-score-api-key table-layout" data-fieldtype="text">
-				<div class="cmb-th">
-					<label for="_member_score_api_key">Export WP Users</label>
-				</div>
-				<div class="cmb-td">
-					<a href="<?php echo wp_nonce_url( menu_page_url( $this->key, false ), 'csv_export', 'member_score_wp_users_upload' ); ?>" class="button-secondary">Send to MemberScore</a>
-					<a href="<?php echo wp_nonce_url( menu_page_url( $this->key, false ), 'csv_export', 'member_score_wp_users_export' ); ?>" class="button-secondary">Export to CSV</a>
-				</div>
-			</div>
 			<?php cmb2_metabox_form( $this->metabox_id, $this->key ); ?>
 		</div>
+		<?php
+	}
+
+	public function export_user_controls() {
+       ?>
+        <div class="cmb-row cmb-type-text cmb2-id--member-score-api-key table-layout" data-fieldtype="text">
+            <div class="cmb-th">
+                <label for="_member_score_api_key">Export WP Users</label>
+            </div>
+            <div class="cmb-td">
+                <a href="<?php echo wp_nonce_url( menu_page_url( $this->key, false ), 'csv_export', 'member_score_wp_users_upload' ); ?>" class="button-secondary">Send to MemberScore</a>
+                <a href="<?php echo wp_nonce_url( menu_page_url( $this->key, false ), 'csv_export', 'member_score_wp_users_export' ); ?>" class="button-secondary">Export to CSV</a>
+            </div>
+        </div>
 		<?php
 	}
 
@@ -139,12 +144,6 @@ class MemberScore_Settings {
 		$cmb->add_field( array(
 			'name' => __( 'API Key', 'member-score' ),
 			'id' => $prefix . 'api_key',
-			'type' => 'text',
-		) );
-
-		$cmb->add_field( array(
-			'name' => __( 'Dev API Key', 'member-score' ),
-			'id' => $prefix . 'dev_api_key',
 			'type' => 'text',
 		) );
 
